@@ -46,7 +46,7 @@ def get_HDB_data(ONEMAP_TOKEN):
     df[['year', 'month']] = df['month'].str.split('-', expand=True).astype(int)
 
     # Drop _id and remaining_lease column
-    df.drop(columns=['_id', 'remaining_lease'], inplace=True)
+    df.drop(columns=['remaining_lease'], inplace=True)
 
     # Getting the latitudes and longtitudes of each unit using parallel processing
     df['address'] = df['block'].str.strip() + ' ' + df['street_name'].str.strip()

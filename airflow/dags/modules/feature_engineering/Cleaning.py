@@ -71,7 +71,7 @@ def cleaning_final_datasets(hdb, schools, mrt):
     )
 
     hdb['distance_to_nearest_mrt'] = mrt_distances.flatten() * 6371000  # Earth's radius in meters
-    hdb.drop(columns=['cluster_lat', 'cluster_long', 'mrt_cluster'], inplace=True)
+    hdb.drop(columns=['_id', 'cluster_lat', 'cluster_long', 'mrt_cluster'], inplace=True)
 
     #one hot encoding
     encoded = pd.get_dummies(hdb[['flat_type', 'flat_model', 'town']], prefix=['flat_type', 'flat_model', 'town'], drop_first=False).astype('uint8')
