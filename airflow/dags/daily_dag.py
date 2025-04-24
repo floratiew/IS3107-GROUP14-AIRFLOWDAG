@@ -1,8 +1,6 @@
 import os
-import json
 import pandas as pd
 from airflow.decorators import dag, task
-from airflow import DAG
 from airflow.providers.google.cloud.hooks.gcs import GCSHook
 from airflow.providers.google.cloud.operators.bigquery import BigQueryInsertJobOperator
 from airflow.providers.google.cloud.hooks.bigquery import BigQueryHook

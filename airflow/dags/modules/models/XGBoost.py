@@ -15,9 +15,9 @@ def train_xgb_model(df: pd.DataFrame, output_model_path: str, output_model_binar
         'n_estimators': 220,
         'max_depth': 9,
         'learning_rate': 0.1,
-        'subsample': 0.9,
+        'subsample': 0.8,
         'colsample_bytree': 0.7,
-        'min_child_weight': 2,
+        'min_child_weight': 1,
         'random_state': 42
     }
 
