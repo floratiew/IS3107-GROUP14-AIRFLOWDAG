@@ -289,20 +289,21 @@ def my_dag():
 
         output_model_path = "models/hdb_xgb_model.json"
         output_columns_path = "models/model_columns.json"
-        train_xgb_model(df, output_model_path)
+        output_model_binary_path = "models/hdb_xgb_model.model"
+        train_xgb_model(df, output_model_path, output_model_binary_path, output_columns_path)
 
         gcs_hook = GCSHook(gcp_conn_id=GCP_CONN_ID)
-        gcs_hook.upload(
-            bucket_name=GCS_BUCKET_NAME,
-            object_name="models/hdb_xgb_model.json",
-            filename=output_model_path
-        )
+        files_to_upload = [
+            (output_model_path, "models/hdb_xgb_model.json"),
+            (output_columns_path, "models/model_columns.json"),
+            (output_model_binary_path, "models/hdb_xgb_model.model")
+        ]
 
-        gcs_hook = GCSHook(gcp_conn_id=GCP_CONN_ID)
-        gcs_hook.upload(
-            bucket_name=GCS_BUCKET_NAME,
-            object_name="models/model_columns.json",
-            filename=output_columns_path
+        for local_path, gcs_object_name in files_to_upload:
+            gcs_hook.upload(
+                bucket_name=GCS_BUCKET_NAME,
+                object_name=gcs_object_name,
+                filename=local_path
         )
 
         print("Trained XGBoost model using BigQuery data and uploaded to GCS.")

@@ -2,9 +2,8 @@ import os
 import pandas as pd
 import json
 from xgboost import XGBRegressor
-from sklearn.model_selection import train_test_split
 
-def train_xgb_model(df: pd.DataFrame, output_model_path: str):
+def train_xgb_model(df: pd.DataFrame, output_model_path: str, output_model_binary: str, output_columns_path: str):
     # Dropping unused categorical columns
     df = df.drop(columns=['town', 'flat_type', 'flat_model'], errors='ignore')
 
@@ -29,7 +28,10 @@ def train_xgb_model(df: pd.DataFrame, output_model_path: str):
     os.makedirs(os.path.dirname(output_model_path), exist_ok=True)
     model.save_model(output_model_path)
 
+    # Also save as binary `.model` (same contents but different extension)
+    model.save_model(output_model_binary)
+
     # Save model training columns for use in prediction
     model_columns = X.columns.tolist()
-    with open("models/model_columns.json", "w") as f:
+    with open(output_columns_path, "w") as f:
         json.dump(model_columns, f)
