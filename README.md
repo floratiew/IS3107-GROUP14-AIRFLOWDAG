@@ -12,7 +12,7 @@ To get started, install the required Python packages using the `requirements.txt
 pip install -r requirements/requirements.txt
 ```
 
-### 📦 What does this do?
+### What does this do?
 
 The `requirements.txt` file contains all the necessary dependencies used in this project, such as:
 
@@ -26,7 +26,7 @@ Installing these ensures that your environment has everything needed to run the 
 
 ---
 
-## 📁 Project Structure
+##  Project Structure
 
 ```
 project-root/
@@ -38,7 +38,7 @@ project-root/
 │           ├── MRT_API.py
 │           └── ...
 ├── requirements/
-│   └── requirements.txt  ✅
+│   └── requirements.txt  
 └── README.md
 ```
 
