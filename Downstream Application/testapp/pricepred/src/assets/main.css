@@ -1,0 +1,90 @@
+@import './base.css';
+@import "tailwindcss";
+
+/* Base App Styling */
+#app {
+  max-width: 1280px;
+  margin: 0 auto;
+  padding: 1rem;
+  font-weight: normal;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+}
+
+/* Link Styling */
+a {
+  text-decoration: none;
+  color: #3b82f6; /* Tailwind blue-500 */
+  transition: all 0.3s ease;
+  padding: 3px;
+  border-radius: 4px;
+}
+
+@media (hover: hover) {
+  a:hover {
+    background-color: rgba(59, 130, 246, 0.1); /* Tailwind blue-500 with opacity */
+    color: #2563eb; /* Tailwind blue-600 */
+  }
+}
+
+/* Form Element Focus Styles */
+input:focus, select:focus {
+  outline: none;
+  box-shadow: 0 0 0 2px rgba(59, 130, 246, 0.5);
+}
+
+/* Custom Animations */
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(10px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+.animate-fade-in {
+  animation: fadeIn 0.5s ease-out forwards;
+}
+
+/* Responsive Adjustments */
+@media (max-width: 640px) {
+  #app {
+    padding: 0.5rem;
+  }
+  
+  .prediction-view h1 {
+    font-size: 1.5rem;
+  }
+  
+  .prediction-view h2 {
+    font-size: 1.25rem;
+  }
+}
+
+@media (min-width: 768px) {
+  #app {
+    padding: 1.5rem;
+  }
+}
+
+@media (min-width: 1024px) {
+  #app {
+    padding: 2rem;
+  }
+}
+
+/* Custom Scrollbar */
+::-webkit-scrollbar {
+  width: 8px;
+}
+
+::-webkit-scrollbar-track {
+  background: #f1f5f9; /* Tailwind slate-100 */
+}
+
+::-webkit-scrollbar-thumb {
+  background: #94a3b8; /* Tailwind slate-400 */
+  border-radius: 4px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: #64748b; /* Tailwind slate-500 */
+}
