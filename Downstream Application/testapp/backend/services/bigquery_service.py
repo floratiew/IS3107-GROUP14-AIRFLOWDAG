@@ -302,8 +302,7 @@ class BigQueryService:
             query += f" AND year = {year}"
             
         query += """
-        ORDER BY floor_area_sqm
-        LIMIT 1000
+        LIMIT 2000
         """
         
         return self.execute_query(query)
